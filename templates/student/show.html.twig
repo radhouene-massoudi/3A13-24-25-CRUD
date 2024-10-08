@@ -1,0 +1,20 @@
+<table border="2">
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>age</td>
+        <td>created At</td>
+        <td>Action</td>
+      
+    </tr>
+{% for student in st%}
+<tr>
+<td>{{student.id}}</td>
+    <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+            <td>{{student.createdAT |date('y-m-d')}}</td>
+                <td><a href="{{path('remove',{'id':student.id})}}">remove</a></td>
+</tr>
+{%endfor%}
+
+</table>
