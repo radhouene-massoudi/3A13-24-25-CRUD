@@ -23,6 +23,9 @@ class Student
     #[ORM\Column]
     private ?int $age = null;
 
+    #[ORM\ManyToOne(inversedBy: 'sts')]
+    private ?Klass $klass = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,6 +65,18 @@ class Student
     public function setAge(int $age): static
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getKlass(): ?Klass
+    {
+        return $this->klass;
+    }
+
+    public function setKlass(?Klass $klass): static
+    {
+        $this->klass = $klass;
 
         return $this;
     }

@@ -40,4 +40,44 @@ class StudentRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findAllByDql($class)
+        {
+            $query = $this
+            ->getEntityManager()
+            ->createQuery('select s from App\Entity\Student s join s.klass c where c.name=:n');
+        $query->setParameter('n',$class);
+        return $query->getResult();
+        }
+
+        public function findAllByQb()
+        {
+            return  
+            $this
+            ->createQueryBuilder('a')
+            ->select('a.name ')
+            ->orderBy('a.name','DESC')
+            //->join('a.klass','c')
+            //->addSelect('c.name')
+            //->where("c.name = '3A13'")
+            ->getQuery()
+            ->getDQL();
+
+        }
+        public function findAllByName($name)
+        {
+            return  
+            $this
+            ->createQueryBuilder('a')
+            ->select('a.name ')
+            ->orderBy('a.name','DESC')
+            ->where('a.name=:n')
+            ->setParameter('n',$name)
+            ->join('a.klass','c')
+            //->addSelect('c.name')
+            //->where("c.name = '3A13'")
+            ->getQuery()
+            ->getSQL();
+
+        }
 }

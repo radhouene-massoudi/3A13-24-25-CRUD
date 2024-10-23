@@ -10,21 +10,15 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StudentformType extends AbstractType
+class AddStsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name')
-            ->add('createdAt')
-            ->add('age')
-            ->add('klass',EntityType::class,[
-                'class'=>Klass::class,
-                'choice_label'=>'name',
-                'expanded'=>true,
-                'multiple'=>false
-            ])
-            ->add('save',SubmitType::class)
+                    ->add('age')
+                    ->add('submit',SubmitType::class)
+           
         ;
     }
 

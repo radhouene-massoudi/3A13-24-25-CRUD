@@ -1,0 +1,5 @@
+{% for dep in deps %}
+{{dep.id}}
+{{dep.name}}
+<a href="{{path('addpc',{'idofdep':dep.id})}}"> aff</a>
+{% endfor%}
